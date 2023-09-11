@@ -8,8 +8,11 @@ import styles from './App.module.scss';
 
 function App() {
     const [count, setCount] = useState(0);
-    function handleClick(){
-        console.log(count);
+    async function handleClick(){
+        await fetch("/.netlify/functions/counter", {
+            method: "POST",
+            body: JSON.stringify({ count: count + 1 }),
+        });
     }
     return (
         <div className={styles.App}>
@@ -49,8 +52,8 @@ function App() {
             </div>
             <div className={styles.card}>
                 <button onClick={(e) => {
-                        setCount((count) => count + 1);
                         handleClick();
+                        setCount((count) => count + 1);
                     }
                 }>count is {count}</button>
                 <p>
