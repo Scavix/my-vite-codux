@@ -8,7 +8,9 @@ import styles from './App.module.scss';
 
 function App() {
     const [count, setCount] = useState(0);
-
+    function handleClick(){
+        console.log(count);
+    }
     return (
         <div className={styles.App}>
             <div>
@@ -46,7 +48,11 @@ function App() {
                 </a>
             </div>
             <div className={styles.card}>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+                <button onClick={(e) => {
+                        setCount((count) => count + 1);
+                        handleClick();
+                    }
+                }>count is {count}</button>
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR
                 </p>
